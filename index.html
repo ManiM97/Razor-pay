@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Integration</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <div class="product-container">
+        <div class="image-gallery">
+            <div class="thumbnail"><img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/e/e/x/m-mfs-shpatch-ole-trends-tower-original-imagh8szgyujhfcs.jpeg?q=70&crop=false" alt="Thumbnail"></div>
+            <div class="thumbnail"><img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/q/w/t/m-mfs-shpatch-ole-trends-tower-original-imagh8szq2pwjzat.jpeg?q=70&crop=false" alt="Thumbnail"></div>
+            <div class="thumbnail"><img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/l/b/l/m-mfs-shpatch-ole-trends-tower-original-imagh8szhdtgutnu.jpeg?q=70&crop=false" alt="Thumbnail"></div>
+        </div>
+
+        <div class="product-main">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/5/g/8/m-mfs-shpatch-ole-trends-tower-original-imagh8szjhveyzvs.jpeg?q=70&crop=false" alt="Fine Tshirt" class="main-image">
+        </div>
+
+        <div class="product-details">
+            <h2>Olive Green T-Shirt</h2>
+            <div class="rating">
+                ⭐⭐⭐⭐⭐
+            </div>
+            <p class="price">₹500.00</p>
+            <p class="description">
+                Razorpay provides an end-to-end online payments solution. For International payments, 
+                we accept Credit Cards, Debit Cards, and PayPal wallet. We support nearly 100 major currencies 
+                from across the globe.
+            </p>
+            <button class="razorpay-btn" id="payButton">Pay with Razorpay</button>
+            <p class="note">*This is not a real transaction, and the money will not debited from your account. Test mode is enabled</p>
+        </div>
+    </div>
+
+    <script>document.getElementById('payButton').addEventListener('click', function () {
+        var options = {
+            key: "rzp_test_SWtCUp3MbSbGzv", // Replace with your Razorpay Key ID
+            amount: 50000, // Amount in paise (e.g., 50000 = ₹500)
+            currency: "INR",
+            name: "Test Mode",
+            description: "Payment for Order #12345",
+            image: "https://yourlogo.com/logo.png", // Optional: Add your logo URL
+            handler: function (response) {
+                alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+            },
+            prefill: {
+                name: "John Doe",
+                email: "john@example.com",
+                contact: "9999999999",
+            },
+            theme: {
+                color: "#3083ff",
+            }
+        };
+    
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    });
+    </script>
+</body>
+</html>
